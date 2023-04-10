@@ -8,7 +8,7 @@ body {
     background-color: #292524;
     color: #fafaf9;
     font-family: 'Sono', sans-serif;
-    padding: 48px 64px;
+    padding: 48px 64px 0px;
 }
 
 .hidden {
@@ -22,37 +22,50 @@ body {
     font-weight: 600;
     margin-top: 24px;
 }
-/*MAIN LAYOUT*/
+
+.disputed {
+    color: #ef4444;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* MAIN LAYOUT */
 #root {
     max-width: 1500px;
     margin: 0 auto;
 }
 
 .header {
-    /*flex container*/
     margin-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .main {
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 48px;
+
+    height: calc(100vh - 48px - 68px - 40px);
 }
 
 @media (max-width: 900px) {
     .main {
         grid-template-columns: 1fr;
+        /* Fixed in a video text overlay, to fix scrolling issue on small screens */
+        height: auto;
     }
 }
 
-/*ELEMENTS*/
+section {
+    overflow: scroll;
+    padding-bottom: 40px;
+}
+
+/* ELEMENTS */
 
 .logo {
-    /*flex container*/
     display: flex;
     align-items: center;
     gap: 16px;
@@ -66,7 +79,7 @@ body {
 h1 {
     font-size: 42px;
     text-transform: uppercase;
-    font-family: "Coiny", sans-serif;
+    font-family: 'Coiny', sans-serif;
     line-height: 1;
     margin-top: 6px;
 }
@@ -83,6 +96,7 @@ h1 {
     padding: 16px 24px;
     letter-spacing: -1px;
     border-radius: 16px;
+
     display: flex;
     align-items: center;
     gap: 24px;
@@ -91,27 +105,25 @@ h1 {
 @media (max-width: 1200px) {
     .fact {
         flex-direction: column;
-        gap: 12px;
         align-items: flex-end;
+        gap: 12px;
     }
 }
 
 .tag {
     text-transform: uppercase;
     font-size: 14px;
-    font-family: "Coiny", sans-serif;
+    font-family: 'Coiny', sans-serif;
     padding-top: 3px;
-    padding-right: 10px;
     padding-left: 10px;
+    padding-right: 10px;
     border-radius: 100px;
-
 }
 
 .vote-buttons {
-    /*automatically calculates the margin needed for the buttons
-    to be all the way to the right*/
     margin-left: auto;
     flex-shrink: 0;
+
     display: flex;
     gap: 8px;
 }
@@ -132,26 +144,26 @@ h1 {
 .vote-buttons button:hover {
     background-color: #292524;
 }
-\.vote-buttons button:disabled {
+
+.vote-buttons button:disabled {
     background-color: #44403c;
 }
+
 ul {
     list-style: none;
 }
 
-.source:link, .source:visited {
+.source:link,
+.source:visited {
     color: #a8a29e;
     text-decoration: none;
     margin-left: 12px;
     transition: 0.3s;
 }
 
-.source:hover,.source:active  {
-    color: #3b85f6;
-}
-
-.btn:hover {
-    transform: scale(110%) rotate(-2deg);
+.source:hover,
+.source:active {
+    color: #3b82f6;
 }
 
 .btn {
@@ -161,11 +173,15 @@ ul {
     text-transform: uppercase;
     font-size: 17px;
     padding: 16px 0 13px;
-    background-image: linear-gradient(135deg, #3b85f6, #ef4444, #16a34a, #eab308 );
+    background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
     color: inherit;
-    transition: 0.3s;
-    border-radius: 50px;
+    border-radius: 100px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(110%) rotate(-2deg);
 }
 
 .btn-large {
@@ -182,8 +198,8 @@ ul {
     width: 100%;
     background-image: none;
 }
-/*FORM */
 
+/* FORM */
 .fact-form {
     background-color: #44403c;
     margin-bottom: 40px;
@@ -220,10 +236,9 @@ ul {
     margin-right: 18px;
 }
 
-
 @media (max-width: 1000px) {
     body {
-        padding: 32px 48px;
+        /* padding: 32px 48px; */
     }
 
     .fact-form {
@@ -234,31 +249,5 @@ ul {
     .fact-form input,
     .fact-form select {
         width: auto;
-    }
-}
-
-@media (max-width: 900px) {
-    .main {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-}
-
-@media (max-width: 600px) {
-    #root {
-        padding: 24px;
-    }
-
-    .header {
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .fact-form {
-        padding: 16px;
-    }
-
-    .fact {
-        padding: 12px 16px;
     }
 }
